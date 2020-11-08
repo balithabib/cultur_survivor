@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/principal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    tools:context=".LabyrinthActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <com.example.labyrinthpuzzle.view.LabyrinthView
+            android:id="@+id/labyrinth_view_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="5" />
+
+        <GridLayout
+            android:id="@+id/numbers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:columnCount="3"
+            android:rowCount="3">
+
+            <TextView
+                android:id="@+id/up"
+                style="@style/StyleButton"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:text="↑" />
+
+            <TextView
+                android:id="@+id/left"
+                style="@style/StyleButton"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:text="←" />
+
+            <TextView
+                android:id="@+id/right"
+                style="@style/StyleButton"
+                android:layout_row="1"
+                android:layout_column="2"
+                android:text="→" />
+
+            <TextView
+                android:id="@+id/down"
+                style="@style/StyleButton"
+                android:layout_row="2"
+                android:layout_column="1"
+                android:text="↓" />
+        </GridLayout>
+
+
+    </LinearLayout>
+</LinearLayout>
