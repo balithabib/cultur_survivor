@@ -17,7 +17,6 @@ public class LabyrinthModel {
     private final Position position;
     private int[] labyrinth;
 
-
     public LabyrinthModel(final int size) {
         this.width = size;
         this.height = size;

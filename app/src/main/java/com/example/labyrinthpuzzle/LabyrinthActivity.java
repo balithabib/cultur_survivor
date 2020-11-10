@@ -1,5 +1,6 @@
 package com.example.labyrinthpuzzle;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -7,13 +8,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.labyrinthpuzzle.model.InitGame;
 import com.example.labyrinthpuzzle.view.LabyrinthView;
 
 public class LabyrinthActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private LabyrinthView labyrinthView;
 
+    @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +32,8 @@ public class LabyrinthActivity extends AppCompatActivity implements AdapterView.
             }
         }
 
+        InitGame initGame = new InitGame();
+        System.out.println(initGame);
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
