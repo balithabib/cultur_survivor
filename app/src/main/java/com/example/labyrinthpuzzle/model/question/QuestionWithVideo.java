@@ -1,4 +1,4 @@
-package com.example.labyrinthpuzzle.model;
+package com.example.labyrinthpuzzle.model.question;
 
 import java.util.List;
 

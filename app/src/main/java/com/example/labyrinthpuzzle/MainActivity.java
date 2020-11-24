@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void generate(View view) {
-        Intent gameActivity = new Intent(MainActivity.this, LabyrinthActivity.class);
+        Intent gameActivity = new Intent(MainActivity.this, GameActivity.class);
         startActivity(gameActivity);
     }
 }

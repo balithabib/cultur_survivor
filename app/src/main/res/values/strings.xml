@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Labyrinth Puzzle</string>
     <string name="generate_labyrinth">Generate Labyrinth</string>
-
+    <string name="description1">Vous devez essayer de sauver le maximum de personnes dans ce monde dévasté par une épidémie.</string>
+    <string name="description2">Etes vous prit à utiliser votre culture et votre savoir, afin de sauver des vie.</string>
     <string-array name="planets_array">
         <item>3</item>
         <item>5</item>

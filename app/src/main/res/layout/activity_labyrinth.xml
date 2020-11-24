@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     android:orientation="vertical"
-    tools:context=".LabyrinthActivity">
+    tools:context=".GameActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,17 +14,50 @@
         android:layout_gravity="center"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/level_id_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textAlignment="center" />
+
         <com.example.labyrinthpuzzle.view.LabyrinthView
             android:id="@+id/labyrinth_view_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="5" />
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 / 0"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal">
+
+                <Chronometer
+                    android:id="@+id/chrono"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </RelativeLayout>
 
         <GridLayout
             android:id="@+id/numbers"

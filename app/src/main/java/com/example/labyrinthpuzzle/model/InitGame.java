@@ -1,51 +1,86 @@
 package com.example.labyrinthpuzzle.model;
 
 import android.os.Build;
-import android.util.Pair;
 
 import androidx.annotation.RequiresApi;
 
-import com.example.labyrinthpuzzle.service.Service;
+import com.example.labyrinthpuzzle.api.LevelApi;
+import com.example.labyrinthpuzzle.api.QuestionApi;
+import com.example.labyrinthpuzzle.model.question.QuestionBasic;
+import com.example.labyrinthpuzzle.sql.SurvivorDAO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @RequiresApi(api = Build.VERSION_CODES.R)
 public class InitGame {
-    List<Pair<Level, LabyrinthModel>> pairLevelAndLabyrinth;
-    int numberOfLevel = 7;
-    Service service = new Service();
+    List<Level> levels;
+    int numberOfLevel = 2;
+    SurvivorDAO survivorDAO;
 
-    public InitGame() {
-        this.pairLevelAndLabyrinth = generateLevelsAndLabyrinths();
+    int index;
+    int size = 17;
+    Random random = new Random();
+
+    public InitGame(final SurvivorDAO survivorDAO) {
+        this.survivorDAO = survivorDAO;
+        this.survivorDAO.upgrade();
+        this.levels = generateLevels();
+        this.index = -1;
     }
 
-    private List<Pair<Level, LabyrinthModel>> generateLevelsAndLabyrinths() {
-        List<Pair<Level, LabyrinthModel>> levels = new ArrayList<>();
-        for (int levelNumber = 0; levelNumber < numberOfLevel; levelNumber++) {
-            LabyrinthModel labyrinthModel = new LabyrinthModel(13);
-            labyrinthModel.generate();
-            levels.add(Pair.create(generateLevel(levelNumber, labyrinthModel), labyrinthModel));
+    private List<Level> generateLevels() {
+        List<Level> levels = new ArrayList<>();
+        for (int levelNumber = 1; levelNumber <= numberOfLevel; levelNumber++) {
+            levels.add(generateLevel(levelNumber));
         }
         return levels;
     }
 
-    private Level generateLevel(int levelNumber, LabyrinthModel labyrinthModel) {
-        return new Level(service.getTitle(levelNumber), service.getPersons(levelNumber, labyrinthModel), service.getSound(levelNumber), service.getBackground(levelNumber));
+    private Level generateLevel(final int levelNumber) {
+        LevelApi level = survivorDAO.getLevel(levelNumber);
+        System.out.println(level);
+        LabyrinthModel labyrinth = new LabyrinthModel(size).generate();
+        size += 2;
+        return new Level(level.getName(), level.getDescription(), getPersons(level.getQuestions(), labyrinth), level.getSound(), level.getImage(), labyrinth);
     }
 
-    public List<Pair<Level, LabyrinthModel>> getPairLevelAndLabyrinth() {
-        return pairLevelAndLabyrinth;
+    public Level getLevel() {
+        index = (index + 1) % numberOfLevel;
+        return levels.get(index);
     }
 
-    public int getNumberOfLevel() {
-        return numberOfLevel;
+    private Position generatePosition(final LabyrinthModel labyrinthModel) {
+        int r, c;
+        do {
+            r = random.nextInt(labyrinthModel.getHeight());
+            c = random.nextInt(labyrinthModel.getWidth());
+        } while (labyrinthModel.isWall(r, c));
+        return new Position(r, c);
+    }
+
+    public List<Person> getPersons(final List<QuestionApi> questions, final LabyrinthModel labyrinthModel) {
+        return questions.stream()
+                .map(toPerson(labyrinthModel))
+                .collect(Collectors.toList());
+    }
+
+    private Function<QuestionApi, Person> toPerson(final LabyrinthModel labyrinthModel) {
+        return questionApi -> {
+            Position position = generatePosition(labyrinthModel);
+            return new Person(new QuestionBasic(questionApi.getQuestion(), questionApi.getAnswers(), questionApi.getRightAnswer()))
+                    .setRow(position.getRow())
+                    .setColumn(position.getColumn());
+        };
     }
 
     @Override
     public String toString() {
         return "InitGame{" +
-                "pairLevelAndLabyrinth=" + pairLevelAndLabyrinth +
+                "pairLevelAndLabyrinth=" + levels +
                 ", numberOfLevel=" + numberOfLevel +
                 '}';
     }

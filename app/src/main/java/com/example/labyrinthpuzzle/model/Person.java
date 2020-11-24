@@ -1,8 +1,10 @@
 package com.example.labyrinthpuzzle.model;
 
+import com.example.labyrinthpuzzle.model.question.QuestionBasic;
+
 public class Person {
-    private int x;
-    private int y;
+    private int row;
+    private int column;
     private QuestionBasic question;
     // image
 
@@ -10,21 +12,21 @@ public class Person {
         this.question = question;
     }
 
-    public int getX() {
-        return x;
+    public int getRow() {
+        return row;
     }
 
-    public Person setX(int x) {
-        this.x = x;
+    public Person setRow(int row) {
+        this.row = row;
         return this;
     }
 
-    public int getY() {
-        return y;
+    public int getColumn() {
+        return column;
     }
 
-    public Person setY(int y) {
-        this.y = y;
+    public Person setColumn(int column) {
+        this.column = column;
         return this;
     }
 
@@ -35,8 +37,8 @@ public class Person {
     @Override
     public String toString() {
         return "Person{" +
-                "x=" + x +
-                ", y=" + y +
+                "row=" + row +
+                ", column=" + column +
                 ", question=" + question +
                 '}';
     }

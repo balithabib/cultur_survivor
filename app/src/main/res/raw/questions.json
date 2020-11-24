@@ -1,0 +1,158 @@
+{
+  "levels": [
+    {
+      "name": "Le choléra (1926-1832)",
+      "description": "Le choléra est une maladie infectieuse touchant essentiellement l'intestin, due à une bactérie (et non un virus), le Vibrio cholerae.",
+      "image": "",
+      "sound": "",
+      "questions": [
+        {
+          "question": "Qu'est-ce que le choléra?",
+          "answers": [
+            "Maladie dermatologique",
+            "Maladie diarrhéique",
+            "Maladie cardio-vasculaire",
+            "Maladie respiratoire"
+          ],
+          "right_answer": "2"
+        },
+        {
+          "question": "Quels sont les précautions élémentaires qu’il faut suivre?",
+          "answers": [
+            "Boire de l'eau",
+            "Manger des fruits de mer",
+            "Manger des pizzas",
+            "Boire de lait"
+          ],
+          "right_answer": "1"
+        },
+        {
+          "question": "Combien de morts en France?",
+          "answers": [
+            "50000",
+            "100",
+            "100000",
+            "25000"
+          ],
+          "right_answer": "3"
+        },
+        {
+          "question": "Le choléra est à paru pour la premiere fois au :",
+          "answers": [
+            "Cameroun",
+            "États-Unis",
+            "Chine",
+            "Inde"
+          ],
+          "right_answer": "4"
+        },
+        {
+          "question": "Le choléra est-il contagieux?",
+          "answers": [
+            "Non contagieux",
+            "Contagieux"
+          ],
+          "right_answer": "2"
+        },
+        {
+          "question": "Comment s'appelle le virus du choléra ??",
+          "answers": [
+            "la bactérie Yersinia pestis",
+            "Leptospira interrogans",
+            "la bactérie Vibrio cholerae",
+            "Mycoplasma hominis"
+          ],
+          "right_answer": "3"
+        },
+        {
+          "question": "Qui a découvert le microbe du choléra?",
+          "answers": [
+            "Pacini",
+            "Yersin",
+            "June Almeida",
+            "Robert Gallo"
+          ],
+          "right_answer": "1"
+        },
+        {
+          "question": "Quelles sont les mesures préventives du choléra?",
+          "answers": [
+            "garder la distance d'un metre",
+            "porter un masque",
+            "",
+            ""
+          ],
+          "right_answer": "1"
+        },
+        {
+          "question": "Qui a inventé le vaccin contre le choléra?",
+          "answers": [
+            "Koprowski",
+            "Jonas Salk",
+            "Albert Calmette",
+            "Pasteur"
+          ],
+          "right_answer": "4"
+        },
+        {
+          "question": "A partir de combien de jours après l’infection peut-on aujourd’hui détecter la présence du la bactérie Vibrio cholerae dans la selle?",
+          "answers": [
+            "pendant 1 à 10 jours après l'infection",
+            "pendant 1 à 20 jours après l'infection",
+            "pendant 1 à 30 jours après l'infection",
+            "pendant 1 à 40 jours après l'infection"
+          ],
+          "right_answer": "1"
+        }
+      ]
+    },
+    {
+      "name": "La peste noire (1347 - 1353)",
+      "description": "La peste noire ou mort noire est le nom donné par les historiens modernes à une pandémie de peste, principalement la peste bubonique, ayant sévi au Moyen Âge, au milieu du XIVe siècle. Cette pandémie a touché l'Eurasie, l'Afrique du Nord et peut-être l'Afrique subsaharienne.",
+      "image": "",
+      "sound": "",
+      "questions": [
+        {
+          "question": "Quelle est l'origine du nom peste?",
+          "answers": [
+            "Latine",
+            "Grecque",
+            "Africain",
+            "Americain"
+          ],
+          "right_answer": "1"
+        },
+        {
+          "question": "Combien de victimes a fait la peste noire en Europe entre 1347 et 1353?",
+          "answers": [
+            "Environ 10 millions",
+            "Environ 15 millions",
+            "Environ 25 millions",
+            "Environ 50 millions"
+          ],
+          "right_answer": "3"
+        },
+        {
+          "question": "Où cette pandémie a été déclarée?",
+          "answers": [
+            "En France",
+            "En Allemagne",
+            "En Algérie",
+            "En chine"
+          ],
+          "right_answer": "4"
+        },
+        {
+          "question": "Par la piqûre de quel insecte le microbe est-il transmis à l'homme ?",
+          "answers": [
+            "Le moustique",
+            "La puce",
+            "Le pou",
+            "La tique"
+          ],
+          "right_answer": "2"
+        }
+      ]
+    }
+  ]
+}

@@ -21,7 +21,7 @@ public class LabyrinthModel {
         this.width = size;
         this.height = size;
         this.random = new Random();
-        this.position = new Position(0, 0);
+        this.position = new Position(1, 1);
     }
 
     /*public static void main(final String[] args) {
@@ -32,7 +32,7 @@ public class LabyrinthModel {
         labyrinth.print();
     }*/
 
-    public int[] generate() {
+    public LabyrinthModel generate() {
         this.labyrinth = new int[width * height];
         int sw = (width - 1) / 2, sh = (height - 1) / 2, toGo = sw * sh - 1, mx, my, d, k = 0;
 
@@ -73,17 +73,16 @@ public class LabyrinthModel {
                 }
             }
         }
-        int x, y;
+        /*int x, y;
         do {
             x = rand() % width;
             y = rand() % height;
         } while (labyrinth[y * width + x] == -1);
         position.setY(y);
-        position.setX(x);
+        position.setX(x);*/
         //System.out.println(x + "           " + y + "             " + labyrinth[y * width + x]);
-        labyrinth[y * width + x] = 7;
-
-        return labyrinth;
+        labyrinth[position.getRow() * width + position.getColumn()] = 7;
+        return this;
     }
 
     private int propagate(final int v, final int x, final int y, int n) {
@@ -172,10 +171,6 @@ public class LabyrinthModel {
         return height;
     }
 
-    public int getSize() {
-        return width * height;
-    }
-
     private void print(final Object object) {
         System.out.print(object);
     }
@@ -222,24 +217,24 @@ public class LabyrinthModel {
     }
 
     public void moveVertical(final int step, final int direction) {
-        int y = direction == 1 ? max(position.getY() + step, 0) : min(position.getY() + 1, height - 1);
-        int next_position = y * width + position.getX();
+        int y = direction == 1 ? max(position.getRow() + step, 0) : min(position.getRow() + 1, height - 1);
+        int next_position = y * width + position.getColumn();
         if (labyrinth[next_position] != -1) {
-            int lastPosition = position.getY() * width + position.getX();
+            int lastPosition = position.getRow() * width + position.getColumn();
             labyrinth[lastPosition] = 0;
             labyrinth[next_position] = 7;
-            position.setY(y);
+            position.setRow(y);
         }
     }
 
     public void moveHorizontal(final int step, final int direction) {
-        int x = direction == 1 ? min(position.getX() + step, width - 1) : max(position.getX() - 1, 0);
-        int next_position = position.getY() * width + x;
+        int x = direction == 1 ? min(position.getColumn() + step, width - 1) : max(position.getColumn() - 1, 0);
+        int next_position = position.getRow() * width + x;
         if (labyrinth[next_position] != -1) {
-            int lastPosition = position.getY() * width + position.getX();
+            int lastPosition = position.getRow() * width + position.getColumn();
             labyrinth[lastPosition] = 0;
             labyrinth[next_position] = 7;
-            position.setX(x);
+            position.setColumn(x);
         }
     }
 
@@ -247,37 +242,7 @@ public class LabyrinthModel {
         return labyrinth[r * width + c] == 7;
     }
 
-    public class Position {
-        private int x;
-        private int y;
-
-        public Position(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        public int getX() {
-            return x;
-        }
-
-        public void setX(final int x) {
-            this.x = x;
-        }
-
-        public int getY() {
-            return y;
-        }
-
-        public void setY(final int y) {
-            this.y = y;
-        }
-
-        @Override
-        public String toString() {
-            return "Position{" +
-                    "x=" + x +
-                    ", y=" + y +
-                    '}';
-        }
+    public Position getPosition() {
+        return position;
     }
 }
